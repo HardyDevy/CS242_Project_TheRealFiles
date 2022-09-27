@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Makes The Project">
-      <change afterPath="$PROJECT_DIR$/src/ClackData.java" afterDir="false" />
-    </list>
+    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Adds ClackData" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2FKVOh9eaDnlkrx12ikjunpeTsZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -40,7 +48,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664240969852</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Adds ClackData">
+      <created>1664241079412</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1664241079412</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -56,6 +71,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Makes The Project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Makes The Project" />
+    <MESSAGE value="Adds ClackData" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adds ClackData" />
   </component>
 </project>
