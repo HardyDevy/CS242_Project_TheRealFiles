@@ -1,6 +1,6 @@
 public class ClackServer {
-    //port
-    //closeConnection
+    int port;
+    boolean closeConnection;
     //dataToReceiveFromClient
     //dataToSendToClient
 

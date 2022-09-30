@@ -1,5 +1,5 @@
 public class MessageClackData {
-    //message
+    String message;
 
     //MessageClackData( userName, message, type )
     //MessageClackData()

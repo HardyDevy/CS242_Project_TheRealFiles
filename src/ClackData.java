@@ -1,6 +1,6 @@
 public class ClackData {
-    //username
-    //type
+    String username;
+    int type;
     //date
 
     //ClackData(userName, type )

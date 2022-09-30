@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Makes new branch">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClackClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileClackData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageClackData.java" afterDir="false" />
-    </list>
+    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Adds comments for all the stuff we gotta do," />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664241845835</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Adds comments for all the stuff we gotta do,">
+      <created>1664554474171</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664554474171</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +101,7 @@
     <MESSAGE value="Adds ClackData" />
     <MESSAGE value="Adds other classes" />
     <MESSAGE value="Makes new branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Makes new branch" />
+    <MESSAGE value="Adds comments for all the stuff we gotta do," />
+    <option name="LAST_COMMIT_MESSAGE" value="Adds comments for all the stuff we gotta do," />
   </component>
 </project>

@@ -1,8 +1,8 @@
 public class ClackClient {
-    //userName
-    //hostName
-    //port
-    //closeConnection
+    String userName;
+    String hostName;
+    int port;
+    boolean closeConnection;
     //dataToSendToServer
     //dataToReceiveFromServer
 

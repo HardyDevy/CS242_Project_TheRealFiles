@@ -1,6 +1,6 @@
 public class FileClackData {
-    //fileName
-    //fileContents
+    String fileName;
+    String fileContents;
 
     //FileClackData(userName, fileName, type )
     //FileClackData()
