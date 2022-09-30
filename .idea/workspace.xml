@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Implements all methods (except hashcode)">
+    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Implements all methods (except hashcode n some other stuff)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClackClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileClackData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MessageClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageClackData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664560860449</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implements all methods (except hashcode n some other stuff)">
+      <created>1664561893057</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1664561893057</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +139,7 @@
     <MESSAGE value="Adds comments for all the stuff we gotta do," />
     <MESSAGE value="Adds some types to data" />
     <MESSAGE value="Implements all methods (except hashcode)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implements all methods (except hashcode)" />
+    <MESSAGE value="Implements all methods (except hashcode n some other stuff)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implements all methods (except hashcode n some other stuff)" />
   </component>
 </project>

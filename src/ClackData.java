@@ -9,7 +9,7 @@ public abstract class ClackData {
     public ClackData(String userName, int type) {
         this.userName = userName;
         this.type = type;
-    };
+    }
     public ClackData(int type){
         this("Anon", type);
     }

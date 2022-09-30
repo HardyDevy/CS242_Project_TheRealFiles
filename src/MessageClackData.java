@@ -12,7 +12,9 @@ public abstract class MessageClackData extends ClackData{
     //public abstract Data getData();
 
     public int hashCode(){
-        return 0x800;
+            int result = 5;
+            result = 17 * result + this.message.hashCode();
+            return result;
     }
     public boolean equals(Object other){
         MessageClackData otherMessage = (MessageClackData) other;

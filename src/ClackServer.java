@@ -21,7 +21,10 @@ public class ClackServer {
 
     // Need To Implement hashCode and add dataToReceiveFromClient and dataToSendToClient to equals and toString
     public int hashCode(){
-        return 696969;
+            int result = 5;
+            result = 17 * result + this.port;
+            return result;
+
     }
     public boolean equals(Object other){
         ClackServer otherClackServer = (ClackServer)other;

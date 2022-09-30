@@ -37,7 +37,11 @@ public class ClackClient {
         return this.port;
     }
     public int hashCode(){
-        return 696969;
+        int result = 5;
+        result = 17 * result + this.userName.hashCode();
+        result = 17 * result + this.hostName.hashCode();
+        result = 17 * result + this.port;
+        return result;
     }
     public boolean equals(Object other){
         ClackClient otherClackClient = (ClackClient)other;
