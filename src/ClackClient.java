@@ -48,6 +48,6 @@ public class ClackClient {
         return (this.userName == otherClackClient.userName && this.hostName == otherClackClient.hostName && this.port == otherClackClient.port);
     }
     public String toString(){
-        return ("Username: " + this.userName + "Host Name: " + this.hostName + "Port: " + this.port);
+        return ("Username: " + this.userName + '\n' + "Host Name: " + this.hostName + '\n' +  "Port: " + this.port);
     }
 }
