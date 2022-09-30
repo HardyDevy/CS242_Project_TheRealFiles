@@ -1,5 +1,7 @@
+package data;
 import javax.xml.crypto.Data;
 import java.util.Date;
+
 
 public abstract class ClackData {
     //ClackData

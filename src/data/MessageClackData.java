@@ -1,7 +1,9 @@
+package data;
+
 import javax.xml.crypto.Data;
 
 public class MessageClackData extends ClackData{
-    //MessageClackData
+    //data.MessageClackData
     private String message;
 
    public MessageClackData(String userName, String message, int type){

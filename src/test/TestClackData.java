@@ -1,3 +1,7 @@
+package test;
+
+import data.FileClackData;
+
 public class TestClackData {
     public static void main (String args[]){
 
