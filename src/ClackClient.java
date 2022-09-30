@@ -1,24 +1,49 @@
 public class ClackClient {
-    String userName;
-    String hostName;
-    int port;
-    boolean closeConnection;
+    public String userName;
+    public String hostName;
+    public int port;
+    public boolean closeConnection;
     //dataToSendToServer
     //dataToReceiveFromServer
 
-    //ClackClient( userName, hostName, port )
-    //ClackClient( userName, hostName )
-    //ClackClient( userName )
-    //ClackClient()
-    //start()
-    //readClientData()
-    //sendData()
-    //receiveData()
-    //printData()
-    //getUserName()
-    //getHostName()
-    //getPort()
-    //hashCode()
-    //equals()
-    //toString()
+    public ClackClient(String userName, String hostName, int port){
+        this.userName = userName;
+        this.hostName = hostName;
+        this.port = port;
+        //dataToSendToServer = null;
+        //dataToRecieveFromServer = null;
+    }
+    public ClackClient(String userName, String hostName){
+        this(userName, hostName, 7000);
+    }
+    ClackClient(String userName){
+        this(userName, "localhost");
+    }
+    ClackClient(){
+        this("anon");
+    }
+    public void start(){}
+    public void readClientData(){}
+    public void sendData(){}
+    public void receiveData(){}
+    public void printData(){}
+    public String getUserName(){
+        return this.userName;
+    }
+    public String getHostName(){
+        return this.hostName;
+    }
+    public int getPort(){
+        return this.port;
+    }
+    public int hashCode(){
+        return 696969;
+    }
+    public boolean equals(Object other){
+        ClackClient otherClackClient = (ClackClient)other;
+        return (this.userName == otherClackClient.userName && this.hostName == otherClackClient.hostName && this.port == otherClackClient.port);
+    }
+    public String toString(){
+        return ("Username: " + this.userName + "Host Name: " + this.hostName + "Port: " + this.port);
+    }
 }
