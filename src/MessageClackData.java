@@ -1,5 +1,6 @@
+import javax.xml.crypto.Data;
+
 public abstract class MessageClackData extends ClackData{
-    //MessageClackData
     private String message;
 
     public MessageClackData(String userName, String message, int type){
@@ -9,7 +10,9 @@ public abstract class MessageClackData extends ClackData{
     public MessageClackData(){
         this("Anon","Error",5);
     }
-    //public abstract Data getData();
+    public Data getData(){
+        return null;
+    }
 
     public int hashCode(){
             int result = 5;
@@ -22,8 +25,7 @@ public abstract class MessageClackData extends ClackData{
                 this.message == otherMessage.message &&
                 this.type == otherMessage.type;
     }
-
-    //toString(){}
-
-
+    public String toString(){
+        return this.message;
+    }
 }
