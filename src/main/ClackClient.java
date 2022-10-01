@@ -1,5 +1,4 @@
 package main;
-
     public class ClackClient {
         public String userName;
         public String hostName;

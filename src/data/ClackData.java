@@ -33,4 +33,5 @@ public abstract class ClackData {
     }
 
     public abstract Data getData();
+
 }

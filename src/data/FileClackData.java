@@ -1,5 +1,6 @@
 package data;
 
+
 import javax.xml.crypto.Data;
 
 public class FileClackData extends ClackData {
