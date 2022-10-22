@@ -16,10 +16,10 @@ public class ClackClient {
     public ClackClient(String userName, String hostName){
         this(userName, hostName, 7000);
     }
-    ClackClient(String userName){
+    public ClackClient(String userName){
         this(userName, "localhost");
     }
-    ClackClient(){
+    public ClackClient(){
         this("anon");
     }
     public void start(){}

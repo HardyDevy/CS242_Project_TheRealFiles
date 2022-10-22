@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Adds TestClackClient and TestClackServer">
-      <change afterPath="$PROJECT_DIR$/src/TestClackData.java" afterDir="false" />
+    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Does some things to fix red">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageClackData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClackClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileClackData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664565632758</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Does some things to fix red">
+      <created>1664654931162</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1664654931162</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +162,7 @@
     <MESSAGE value="Implements all methods (except hashcode n some other stuff)" />
     <MESSAGE value="Implements all methods (except hashcode n some other stuff) And extends classes to other classes" />
     <MESSAGE value="Adds TestClackClient and TestClackServer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adds TestClackClient and TestClackServer" />
+    <MESSAGE value="Does some things to fix red" />
+    <option name="LAST_COMMIT_MESSAGE" value="Does some things to fix red" />
   </component>
 </project>

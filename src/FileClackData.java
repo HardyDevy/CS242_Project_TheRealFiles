@@ -20,7 +20,9 @@ public class FileClackData extends ClackData {
     public String getFileName(){
         return this.fileName;
     }
-  //  public abstract Data getData();
+    public String getData(){
+        return this.fileContents;
+    }
     public void readFileContents(){};
     public void writeFileContents(){};
 
