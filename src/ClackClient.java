@@ -1,10 +1,11 @@
 public class ClackClient {
     public String userName;
     public String hostName;
+    private static final int DEFAULT_PORT = 7000;
     public int port;
     public boolean closeConnection;
-    //dataToSendToServer
-    //dataToReceiveFromServer
+    public ClackData dataToSendToServer;
+    public ClackData dataToReceiveFromServer;
 
     public ClackClient(String userName, String hostName, int port){
         this.userName = userName;
@@ -14,7 +15,7 @@ public class ClackClient {
         //dataToRecieveFromServer = null;
     }
     public ClackClient(String userName, String hostName){
-        this(userName, hostName, 7000);
+        this(userName, hostName, DEFAULT_PORT);
     }
     public ClackClient(String userName){
         this(userName, "localhost");

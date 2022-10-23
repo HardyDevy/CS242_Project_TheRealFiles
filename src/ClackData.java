@@ -26,12 +26,42 @@ public abstract class ClackData {
     public int getType(){
         return this.type;
     }
-    public String getuserName(){
+    public String getUserName(){
         return this.userName;
     }
     public Date getDate(){
         return this.date;
     }
+    public abstract String getData();
+    protected String encrypt(String inputStringToEncrypt, String key){
+        int keyLength = key.length();
+        int stringLength = inputStringToEncrypt.length();
+        char[] charArray = new char[stringLength];
+        charArray = inputStringToEncrypt.toCharArray();
+        int[] charAsNumArray = new int[stringLength];
 
-    //public abstract Data getData(){}
+        for(int i = 0; i < stringLength; i++){
+            charAsNumArray[i] = (int)charArray[i] + keyLength;
+            charArray[i] = (char)charAsNumArray[i];
+        }
+        String encryptedString = String.valueOf(charArray);
+        return encryptedString;
+    }
+
+    protected String decrypt(String inputStringToDecrypt, String key){
+        int keyLength = key.length();
+        int stringLength = inputStringToDecrypt.length();
+        char[] charArray = new char[stringLength];
+        charArray = inputStringToDecrypt.toCharArray();
+        int[] charAsNumArray = new int[stringLength];
+
+        for(int i = 0; i < stringLength; i++){
+            charAsNumArray[i] = (int)charArray[i] - keyLength;
+            charArray[i] = (char)charAsNumArray[i];
+        }
+
+        String decryptedString = String.valueOf(charArray);
+        return decryptedString;
+    }
+
 }
