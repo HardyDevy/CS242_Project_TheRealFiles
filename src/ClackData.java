@@ -33,34 +33,76 @@ public abstract class ClackData {
         return this.date;
     }
     public abstract String getData();
-    protected String encrypt(String inputStringToEncrypt, String key){
-        int keyLength = key.length();
-        int stringLength = inputStringToEncrypt.length();
-        char[] charArray = new char[stringLength];
-        charArray = inputStringToEncrypt.toCharArray();
-        int[] charAsNumArray = new int[stringLength];
 
+    protected String encrypt(String inputStringToEncrypt, String key){
+// Creates variables for lengths of string and key
+        int stringLength = inputStringToEncrypt.length();
+        int keyLength = key.length();
+// Creates arrays to convert string and key to char arrays
+        char[] charArray = new char[stringLength];
+        char[] keyArray = new char[keyLength];
+// Fills arays with string and key as chars
+        keyArray = key.toCharArray();
+        charArray = inputStringToEncrypt.toCharArray();
+// Makes arrays for int values of string and key chars
+        int[] charAsNumArray = new int[stringLength];
+        int[] keyAsNumArray = new int[stringLength];
+// Makes an array filled with repeating key
+        char[] fullKeyCharArray = new char[stringLength];
+        int idx = 0;
         for(int i = 0; i < stringLength; i++){
-            charAsNumArray[i] = (int)charArray[i] + keyLength;
-            charArray[i] = (char)charAsNumArray[i];
+            if(idx+1 > keyLength)
+                idx = 0;
+            fullKeyCharArray[i] = keyArray[idx];
+            keyAsNumArray[i] = (int)fullKeyCharArray[i];
+            idx++;
         }
-        String encryptedString = String.valueOf(charArray);
+// Adds int value of key array to int value of string array
+        char[] encryptedCharArray = new char[stringLength];
+        for(int i = 0; i < stringLength; i++){
+            if((int)charArray[i] >= 65 && (int)charArray[i] <= 90 || (int)charArray[i] >= 97 && (int)charArray[i] <= 120 )
+                charAsNumArray[i] = (( (int)charArray[i] + keyAsNumArray[i] ) % 26) + 65;
+            else
+                charAsNumArray[i] =(int)charArray[i];
+            encryptedCharArray[i] = (char)charAsNumArray[i];
+        }
+        String encryptedString = String.valueOf(encryptedCharArray);
         return encryptedString;
     }
 
     protected String decrypt(String inputStringToDecrypt, String key){
-        int keyLength = key.length();
+// Creates variables for lengths of string and key
         int stringLength = inputStringToDecrypt.length();
+        int keyLength = key.length();
+// Creates arrays to convert string and key to char arrays
         char[] charArray = new char[stringLength];
+        char[] keyArray = new char[keyLength];
+// Fills arays with string and key as chars
+        keyArray = key.toCharArray();
         charArray = inputStringToDecrypt.toCharArray();
+// Makes arrays for int values of string and key chars
         int[] charAsNumArray = new int[stringLength];
-
-        for(int i = 0; i < stringLength; i++){
-            charAsNumArray[i] = (int)charArray[i] - keyLength;
-            charArray[i] = (char)charAsNumArray[i];
+        int[] keyAsNumArray = new int[stringLength];
+// Makes an array filled with repeating key
+        char[] fullKeyCharArray = new char[stringLength];
+        int idx = 0;
+        for(int i = 0; i < stringLength; i++) {
+            if (idx + 1 > keyLength)
+                idx = 0;
+            fullKeyCharArray[i] = keyArray[idx];
+            keyAsNumArray[i] = (int) fullKeyCharArray[i];
+            idx++;
         }
-
-        String decryptedString = String.valueOf(charArray);
+// Adds int value of key array to int value of string array
+        char[] decryptedCharArray = new char[stringLength];
+        for(int i = 0; i < stringLength; i++){
+            if((int)charArray[i] >= 65 && (int)charArray[i] <= 90 || (int)charArray[i] >= 97 && (int)charArray[i] <= 120 )
+                charAsNumArray[i] = (( (int)charArray[i] - keyAsNumArray[i] ) % 26) + 65;
+            else
+                charAsNumArray[i] =(int)charArray[i];
+            decryptedCharArray[i] = (char)charAsNumArray[i];
+        }
+        String decryptedString = String.valueOf(decryptedCharArray);
         return decryptedString;
     }
 

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Fixing things we did wrong in part 1">
-      <change afterPath="$PROJECT_DIR$/src/TestClackData.java" afterDir="false" />
+    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="Making encrypt and some other things">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClackClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClackServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileClackData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessageClackData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestClackData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666466244477</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Making encrypt and some other things">
+      <created>1666548113015</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1666548113015</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,7 +178,8 @@
     <MESSAGE value="Adds TestClackClient and TestClackServer" />
     <MESSAGE value="Does some things to fix red" />
     <MESSAGE value="Fixing things we did wrong in part 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing things we did wrong in part 1" />
+    <MESSAGE value="Making encrypt and some other things" />
+    <option name="LAST_COMMIT_MESSAGE" value="Making encrypt and some other things" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

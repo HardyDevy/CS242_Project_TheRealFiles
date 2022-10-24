@@ -8,11 +8,11 @@ public class TestClackData {
         FileClackData datay = new FileClackData("larks", "Enter File Name Here", 2);
         FileClackData dataz = new FileClackData("nope", "Enter File Name Here", 2);
 //test printing
-        System.out.println("Current username is " + data1.getUserName());
-        System.out.println("Current file name is " + data2.getFileName());
-        System.out.println("Current message is " + data1.getData());
-        System.out.println("Current type is " + data1.getType());
-        System.out.println("Set date is " + data1.getDate());
+//        System.out.println("Current username is " + data1.getUserName());
+//        System.out.println("Current file name is " + data2.getFileName());
+//        System.out.println("Current message is " + data1.getData());
+//        System.out.println("Current type is " + data1.getType());
+//        System.out.println("Set date is " + data1.getDate());
 ////test equals
 //        System.out.println(data1.equals(dataa));
 //        System.out.println(data1.equals(datab));
@@ -26,8 +26,10 @@ public class TestClackData {
 //        System.out.println(data2.hashCode());
 
 //Encryption
-        System.out.println("Message: HelloWorld");
-        System.out.println(data2.encrypt("Hello World", "ThisIsABigKey"));
-        System.out.println(data2.decrypt(data2.encrypt("Hello World", "ThisIsABigKey"), "ThisIsABigKey"));
+        System.out.println("\nMessage: HELLO, WORLD!");
+        System.out.print("Encrypted: ");
+        System.out.print(data2.encrypt("HELLO, WORLD!", "ABC"));
+        System.out.print("\nDecrypted: ");
+        System.out.print(data2.decrypt(data2.encrypt("HELLO, WORLD!", "ABC"), "ABC"));
     }
     }
