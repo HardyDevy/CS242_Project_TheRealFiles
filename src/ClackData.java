@@ -60,8 +60,10 @@ public abstract class ClackData {
 // Adds int value of key array to int value of string array
         char[] encryptedCharArray = new char[stringLength];
         for(int i = 0; i < stringLength; i++){
-            if((int)charArray[i] >= 65 && (int)charArray[i] <= 90 || (int)charArray[i] >= 97 && (int)charArray[i] <= 120 )
-                charAsNumArray[i] = (( (int)charArray[i] + keyAsNumArray[i] ) % 26) + 65;
+            if((int)charArray[i] >= 65 && (int)charArray[i] <= 90)
+                charAsNumArray[i] = (( (int)charArray[i] + keyAsNumArray[i] + 1 ) % 26) + 'A';
+            else if((int)charArray[i] >= 97 && (int)charArray[i] <= 122 )
+                charAsNumArray[i] = (( (int)charArray[i] + keyAsNumArray[i] + 1 ) % 26) + 'a';
             else
                 charAsNumArray[i] =(int)charArray[i];
             encryptedCharArray[i] = (char)charAsNumArray[i];
@@ -96,8 +98,11 @@ public abstract class ClackData {
 // Adds int value of key array to int value of string array
         char[] decryptedCharArray = new char[stringLength];
         for(int i = 0; i < stringLength; i++){
-            if((int)charArray[i] >= 65 && (int)charArray[i] <= 90 || (int)charArray[i] >= 97 && (int)charArray[i] <= 120 )
-                charAsNumArray[i] = (( (int)charArray[i] - keyAsNumArray[i] ) % 26) + 65;
+            if((int)charArray[i] >= 65 && (int)charArray[i] <= 90)
+                charAsNumArray[i] = (( (int)charArray[i] - keyAsNumArray[i] - 1 ) % 26) + 'A';
+            else if ((int)charArray[i] >= 97 && (int)charArray[i] <= 122)
+                charAsNumArray[i] = (( (int)charArray[i] - keyAsNumArray[i] - 13 ) % 26) + 'a';
+
             else
                 charAsNumArray[i] =(int)charArray[i];
             decryptedCharArray[i] = (char)charAsNumArray[i];

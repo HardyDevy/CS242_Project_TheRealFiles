@@ -26,10 +26,10 @@ public class TestClackData {
 //        System.out.println(data2.hashCode());
 
 //Encryption
-        System.out.println("\nMessage: HELLO, WORLD!");
+        System.out.println("\nMessage: Hello, World!");
         System.out.print("Encrypted: ");
-        System.out.print(data2.encrypt("HELLO, WORLD!", "ABC"));
+        System.out.print(data2.encrypt("Hello, World!", "ABC"));
         System.out.print("\nDecrypted: ");
-        System.out.print(data2.decrypt(data2.encrypt("HELLO, WORLD!", "ABC"), "ABC"));
+        System.out.print(data2.decrypt(data2.encrypt("Hello, World!", "ABC"), "ABC"));
     }
     }
