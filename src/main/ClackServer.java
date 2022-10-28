@@ -1,11 +1,12 @@
 package main;
-
-
+import data.ClackData;
     public class ClackServer {
         int port;
+        private static final int DEFAULT_PORT = 7000;
         boolean closeConnection;
-        //dataToReceiveFromClient
-        //dataToSendToClient
+        public ClackData dataToReceiveFromClient;
+        public ClackData dataToSendToClient;
+
 
         public ClackServer(int port){
             this.port = port;
@@ -13,7 +14,7 @@ package main;
             //dataToSendToClient = null;
         }
        public ClackServer(){
-            this(7000);
+            this(DEFAULT_PORT);
         }
         public void start(){}
         public void receiveData(){}
@@ -22,12 +23,9 @@ package main;
             return this.port;
         }
 
-        // Need To Implement hashCode and add dataToReceiveFromClient and dataToSendToClient to equals and toString
-        public int hashCode(){
-            int result = 5;
-            result = 17 * result + this.port;
-            return result;
 
+        public int hashCode(){
+            return 17 * (1 + this.port);
         }
         public boolean equals(Object other){
             ClackServer otherClackServer = (ClackServer)other;

@@ -6,10 +6,19 @@ public class MessageClackData extends ClackData{
     //data.MessageClackData
     private String message;
 
+    public final int CONSTANT_LOGOUT = 1;
+    public final int CONSTANT_SENDMESSAGE =2;
+    public MessageClackData(String userName, String message, String key, int type){
+        super(userName, type);
+        this.message = message;
+    }
+
+
    public MessageClackData(String userName, String message, int type){
        super(userName, type);
        this.message = message;
    }
+
     public MessageClackData(){
        this("Anon","Error",5);
     }
@@ -19,12 +28,17 @@ public class MessageClackData extends ClackData{
     public String getMessage(){
         return message;
     }
-    public Data getData(){
-       return null;
+    public String getData(){
+       return message;
    };
+    public String getData(String key){
+        decrypt(message, key);
+        return message;
+    };
 
 
-    public boolean equals(MessageClackData otherMessage){
+    public boolean equals(Object other){
+        MessageClackData otherMessage = (MessageClackData) other;
        return this.userName == otherMessage.userName &&
                this.message == otherMessage.message &&
                this.type == otherMessage.type;
@@ -39,11 +53,7 @@ public class MessageClackData extends ClackData{
 
     }
 
-    public String toString(){
-        return "The Username is: " + this.userName + '\n' +
-                "The message is: " + this.message + '\n' +
-                "The type is: " + this.type + '\n';
-    }
+    public String toString() { return this.message;}
 
 
 }

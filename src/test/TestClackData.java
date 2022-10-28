@@ -1,9 +1,13 @@
 package test;
 import data.FileClackData;
 import data.MessageClackData;
+import data.ClackData;
+
 
 public class TestClackData {
     public static void main (String args[]){
+
+        ClackData clackdata = new MessageClackData("larks", "Enter File Name Here", 2);
 
 MessageClackData data1 = new MessageClackData("larks", "Enter Message Here", 2);
         MessageClackData dataa = new MessageClackData("larks", "Enter Message Here", 2);
@@ -28,8 +32,12 @@ MessageClackData data1 = new MessageClackData("larks", "Enter Message Here", 2);
 //hashcode
         System.out.println(data1.hashCode());
         System.out.println(data2.hashCode());
-
-
+//ClackData
+        System.out.println("\nMessage: Hello, World!");
+        System.out.print("Encrypted: ");
+        System.out.print(clackdata.encrypt("Hello, World!", "ABCDEF"));
+        System.out.print("\nDecrypted: ");
+        System.out.print(clackdata.decrypt(clackdata.encrypt("Hello, World!", "ABCDEF"), "ABCDEF"));
 
     }
 
