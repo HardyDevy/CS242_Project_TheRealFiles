@@ -54,6 +54,7 @@ public class ClackClient {
             }
             inFromStd.close();
         }
+
     public void readClientData() {
         System.out.println("Input desired choice");
         String nextString = inFromStd.next();

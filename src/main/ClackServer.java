@@ -8,6 +8,7 @@ import data.ClackData;
         public ClackData dataToSendToClient;
 
 
+
         public ClackServer(int port){
             this.port = port;
             //dataToReceiveFromClient = null;

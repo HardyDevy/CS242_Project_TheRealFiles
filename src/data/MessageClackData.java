@@ -14,6 +14,7 @@ public class MessageClackData extends ClackData{
     }
 
 
+
    public MessageClackData(String userName, String message, int type){
        super(userName, type);
        this.message = message;

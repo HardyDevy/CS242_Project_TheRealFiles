@@ -43,6 +43,7 @@ public abstract class ClackData {
     }
     public abstract String getData();
 
+
     public String encrypt(String inputStringToEncrypt, String key){
 // Creates variables for lengths of string and key
         int stringLength = inputStringToEncrypt.length();
