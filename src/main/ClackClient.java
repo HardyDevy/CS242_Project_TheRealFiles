@@ -60,15 +60,21 @@ public class ClackClient {
 
                // Socket clientSkt = skt.accept();
                 System.out.println("test");
-                PrintWriter outToServer = new PrintWriter(skt.getOutputStream(), true);
-                BufferedReader inFromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+              // PrintWriter outToServer = new PrintWriter(skt.getOutputStream(), true);
+               // BufferedReader inFromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+                ObjectOutputStream outToServer = new ObjectOutputStream(skt.getOutputStream());
+                ObjectInputStream inFromServer = new ObjectInputStream(new ObjectInputStream(skt.getInputStream()));
 
                 while (!closeConnection) {
                     readClientData();
                 if (inFromStd == null){
-                    outToServer.println("From Server: There is no input to echo");
+                    System.out.println("No input detected");
                 } else {
+                    sendData();
+                    receiveData();
                     printData();
+
+
                    // outToServer.println("From Server: Echo--" + inFromStd);
                 }
 
@@ -122,7 +128,14 @@ public class ClackClient {
         public void sendData(){}
         public void receiveData(){}
         public void printData(){
-        System.out.println(dataToReceiveFromServer);
+
+//            if (this.dataToReceiveFromServer != null) {
+//                System.out.println("From: " + this.dataToReceiveFromServer.getUserName());
+//                System.out.println("Date: " + this.dataToReceiveFromServer.getDate());
+//                System.out.println("Data: " + this.dataToReceiveFromServer.getData(DEFAULTKEY));
+//                System.out.println();
+//            }
+            System.out.println(dataToReceiveFromServer);
     };
 
 
