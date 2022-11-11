@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="ProjectPt2Final">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/ClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ClackData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ClackClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ClackClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ClackServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestClackClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestClackClient.java" afterDir="false" />
-    </list>
+    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="newpt3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
