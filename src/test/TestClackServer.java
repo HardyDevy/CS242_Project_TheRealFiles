@@ -15,6 +15,7 @@ public class TestClackServer {
         System.out.print('\n');
         System.out.println(server.toString());
         System.out.println(server2.toString());
+        server.start();
     }
 }
 
