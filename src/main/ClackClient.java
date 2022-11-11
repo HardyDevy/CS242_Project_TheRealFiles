@@ -57,8 +57,6 @@ public class ClackClient {
             try {
 
                 Socket skt = new Socket(hostName, port);
-
-               // Socket clientSkt = skt.accept();
                 System.out.println("test");
               // PrintWriter outToServer = new PrintWriter(skt.getOutputStream(), true);
                // BufferedReader inFromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
@@ -99,7 +97,6 @@ public class ClackClient {
          try {
         if (nextString.equals("DONE")) {
             closeConnection = true;
-            System.out.println(closeConnection);
         } else if (nextString.equals("LISTUSERS")) { //nothing rn
             // else if (inFromStd.equals(CONSTANT_LOGOUT )) { // nothing rn
 
@@ -107,17 +104,16 @@ public class ClackClient {
             String filename = inFromStd.next();
             dataToSendToServer = new FileClackData(userName, filename, CONSTANT_SENDFILE);
             try {
-                ((FileClackData) this.dataToSendToServer).readFileContents();
+                ((FileClackData) this.dataToSendToServer).readFileContents(DEFAULTKEY);
             } catch (IOException ioe) {
                 System.err.println("IO Exception");
             }
         } else {
-
             String message = nextString + inFromStd.nextLine();
            // dataToSendToServer = new MessageClackData();
 
             // String message = inFromStd.next();
-            dataToSendToServer = new MessageClackData(userName, message, CONSTANT_SENDMESSAGE);
+            dataToSendToServer = new MessageClackData(userName, message, DEFAULTKEY, CONSTANT_SENDMESSAGE);
         }
 
         } catch(InputMismatchException ime)
