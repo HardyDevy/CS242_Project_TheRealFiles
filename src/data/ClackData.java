@@ -1,9 +1,10 @@
 package data;
 import javax.xml.crypto.Data;
+import java.io.Serializable;
 import java.util.Date;
 import java.io.File;
 
-public abstract class ClackData {
+public abstract class ClackData implements Serializable {
     public static final int CONSTANT_LISTUSERS = 0;
     public static final int CONSTANT_LOGOUT = 1;
     public static final int CONSTANT_SENDMESSAGE = 2;

@@ -1,5 +1,7 @@
 package main;
- import java.io.IOException;
+ import java.io.*;
+ import java.net.ServerSocket;
+ import java.net.Socket;
  import java.util.InputMismatchException;
  import java.util.Scanner;
  import data.ClackData;
@@ -14,11 +16,15 @@ public class ClackClient {
         public String hostName;
         public static final int DEFAULT_PORT = 7000;
         public int port;
-        public boolean closeConnection;
+        public boolean closeConnection = false;
         public  Scanner inFromStd;
         protected static final String DEFAULTKEY = "SLAYGIRLBOSSBOSSSLAY";
     ClackData dataToSendToServer = null;
     ClackData dataToReceiveFromServer = null;
+
+    ObjectOutputStream outToServer = null;
+    ObjectInputStream inFromServer = null;
+
 
 
     public ClackClient(String userName, String hostName, int port){
@@ -47,12 +53,38 @@ public class ClackClient {
         }
         public void start() {
             inFromStd = new Scanner(System.in);
-            while (!closeConnection) {
-                readClientData();
-                dataToReceiveFromServer = dataToSendToServer;
-                printData();
+
+            try {
+
+                Socket skt = new Socket(hostName, port);
+
+               // Socket clientSkt = skt.accept();
+                System.out.println("test");
+                PrintWriter outToServer = new PrintWriter(skt.getOutputStream(), true);
+                BufferedReader inFromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+
+                while (!closeConnection) {
+                    readClientData();
+                if (inFromStd == null){
+                    outToServer.println("From Server: There is no input to echo");
+                } else {
+                    printData();
+                   // outToServer.println("From Server: Echo--" + inFromStd);
+                }
+
+                    dataToReceiveFromServer = dataToSendToServer;
+                  //  printData();
+                }
+                inFromStd.close();
+                outToServer.close();
+                inFromServer.close();
+                skt.close();
+
+
+            }catch (IOException ioe){
+                System.err.println("Try that again");
+
             }
-            inFromStd.close();
         }
 
     public void readClientData() {

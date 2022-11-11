@@ -1,6 +1,9 @@
 package main;
 import data.ClackData;
-    public class ClackServer {
+
+import java.net.ServerSocket;
+
+public class ClackServer {
         int port;
         private static final int DEFAULT_PORT = 7000;
         boolean closeConnection;
@@ -17,7 +20,9 @@ import data.ClackData;
        public ClackServer(){
             this(DEFAULT_PORT);
         }
-        public void start(){}
+        public void start(){
+//            ServerSocket ssk = new ServerSocket(port);
+        }
         public void receiveData(){}
         public void sendData(){}
         public int getPort(){
