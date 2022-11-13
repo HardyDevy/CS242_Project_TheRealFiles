@@ -71,8 +71,8 @@ public class ClackClient {
             System.out.println("test");
             // PrintWriter outToServer = new PrintWriter(skt.getOutputStream(), true);
             // BufferedReader inFromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
-            ObjectOutputStream outToServer = new ObjectOutputStream(skt.getOutputStream());
-            ObjectInputStream inFromServer = new ObjectInputStream(skt.getInputStream());
+            this.outToServer = new ObjectOutputStream(skt.getOutputStream());
+            this.inFromServer = new ObjectInputStream(skt.getInputStream());
 
             while (!this.closeConnection) {
                 System.out.println("connection open");
@@ -157,6 +157,7 @@ public class ClackClient {
     public void receiveData() {
         try {
 //            ClackData dataToReceiveFromServer = (ClackData) inFromServer.readObject();
+            System.out.println("reached before try in receive data");
             this.dataToReceiveFromServer = (ClackData) this.inFromServer.readObject();
             System.out.println("reached try in receive data");
         } catch (IOException ioe) {

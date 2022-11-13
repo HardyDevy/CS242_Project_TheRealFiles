@@ -41,11 +41,12 @@ public class ClackServer {
             System.out.println("Waiting to accept client");
             Socket clientSkt = sskt.accept();
             System.out.println("accepted");
-            ObjectOutputStream outToClient = new ObjectOutputStream(clientSkt.getOutputStream());
-            ObjectInputStream inFromClient = new ObjectInputStream(clientSkt.getInputStream());
+            this.outToClient = new ObjectOutputStream(clientSkt.getOutputStream());
+            this.inFromClient = new ObjectInputStream(clientSkt.getInputStream());
 
             receiveData();
             this.dataToSendToClient = this.dataToReceiveFromClient;
+            //this.dataToReceiveFromClient = this.dataToSendToClient;
             sendData();
 
             sskt.close();
@@ -62,15 +63,23 @@ public class ClackServer {
             this.outToClient.writeObject(this.dataToSendToClient);
         } catch (IOException ioe) {
             System.err.println("IO Exception");
+        }catch (RuntimeException rte) {
+            System.err.println("runtime Exception");
         }
     }
     public void receiveData(){
         try {
+            System.out.println("reached before try in receive data");
             this.dataToReceiveFromClient = (ClackData)this.inFromClient.readObject();
+            //this.inFromClient.readObject(this.dataToReceiveFromClient);
+            System.out.println("reached try in receive data");
         } catch (IOException ioe){System.err.println("IO Exception");
         }catch(ClassNotFoundException cnfe) {
             System.err.println("class not found");
+        }catch (RuntimeException rte) {
+            System.err.println("runtime Exception");
         }
+
     }
     public int getPort(){
         return this.port;
