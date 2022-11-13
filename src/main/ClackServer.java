@@ -13,22 +13,16 @@ public class ClackServer {
     boolean closeConnection;
     public ClackData dataToReceiveFromClient;
     public ClackData dataToSendToClient;
-    ObjectOutputStream outToClient;
-    ObjectInputStream inFromClient;
-
+    ObjectOutputStream outToClient = null;
+    ObjectInputStream inFromClient = null;
 
     public ClackServer(int port) {
         if (port < 1024)
             throw new IllegalArgumentException("Port Number must be greater than 1024.");
         else
             this.port = port;
-       this.closeConnection = false;
-        this.dataToReceiveFromClient = null;
-        this.dataToSendToClient = null;
-        this.outToClient = null;
-        this.inFromClient = null;
-
-
+        //dataToReceiveFromClient = null;
+        //dataToSendToClient = null;
     }
 
     public ClackServer() {
@@ -44,69 +38,51 @@ public class ClackServer {
             ObjectOutputStream outToClient = new ObjectOutputStream(clientSkt.getOutputStream());
             ObjectInputStream inFromClient = new ObjectInputStream(clientSkt.getInputStream());
 
-    receiveData();
-    this.dataToSendToClient = this.dataToReceiveFromClient;
-    sendData();
+            receiveData();
+            dataToSendToClient = dataToReceiveFromClient;
+            sendData();
 
             sskt.close();
             clientSkt.close();
-            this.outToClient.close();
-            this.inFromClient.close();
+            outToClient.close();
+            inFromClient.close();
         }catch (IOException ioe)
         { System.err.println("IO Exception occurred");
         }
-
-}
+    }
     public void sendData() {
         try {
-            this.outToClient.writeObject(this.dataToSendToClient);
+            outToClient.writeObject(dataToSendToClient);
         } catch (IOException ioe) {
             System.err.println("IO Exception");
         }
     }
     public void receiveData(){
         try {
-            this.dataToReceiveFromClient = (ClackData)this.inFromClient.readObject();
+            dataToReceiveFromClient = (ClackData)inFromClient.readObject();
         } catch (IOException ioe){System.err.println("IO Exception");
         }catch(ClassNotFoundException cnfe) {
             System.err.println("class not found");
         }
     }
-        public int getPort(){
-            return this.port;
-        }
+    public int getPort(){
+        return this.port;
+    }
 
-
-        public int hashCode(){
-            return 17 * (1 + this.port);
-        }
-        public boolean equals(Object other){
-            if (this == other) {
-                return true;
-            }
-            if (!(other instanceof ClackServer)) {
-                return false;
-            }
-
-            ClackServer otherClackServer = (ClackServer)other;
-            return (this.port == otherClackServer.port && this.closeConnection == otherClackServer.closeConnection);
-        }
-        public String toString(){
-            //return ("Port: " + this.port);
-            return "This instance of ClackServer has the following properties:\n"
-                    + "Port number: " + this.port + "\n"
-                    + "Connection status: " + (this.closeConnection ? "Closed" : "Open") + "\n"
-                    + "Data to receive from the client: " + this.dataToReceiveFromClient + "\n"
-                    + "Data to send to the client: " + this.dataToSendToClient + "\n";
-        }
-
-
+    public int hashCode(){
+        return 17 * (1 + this.port);
+    }
+    public boolean equals(Object other){
+        ClackServer otherClackServer = (ClackServer)other;
+        return (this.port == otherClackServer.port && this.closeConnection == otherClackServer.closeConnection);
+    }
+    public String toString(){
+        return ("Port: " + this.port);
+    }
 
     public static void main(String args[]) {
         ClackServer obj= new ClackServer();
         obj.start();
 
     }
-    }
-
-
+}
