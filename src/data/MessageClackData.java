@@ -15,10 +15,10 @@ public class MessageClackData extends ClackData{
 
 
 
-   public MessageClackData(String userName, String message, int type){
-       super(userName, type);
-       this.message = message;
-   }
+    public MessageClackData(String userName, String message, int type){
+        super(userName, type);
+        this.message = message;
+    }
 
     public MessageClackData() {
         // It is okay to do either this:
@@ -35,8 +35,8 @@ public class MessageClackData extends ClackData{
         return this.message;
     }
     public String getData(){
-       return this.message;
-   };
+        return this.message;
+    };
     public String getData(String key){
         return decrypt(message, key);
         //return message;
@@ -52,9 +52,9 @@ public class MessageClackData extends ClackData{
         }
 
         MessageClackData otherMessage = (MessageClackData) other;
-       return this.userName == otherMessage.userName &&
-               this.message == otherMessage.message &&
-               this.type == otherMessage.type;
+        return this.userName == otherMessage.userName &&
+                this.message == otherMessage.message &&
+                this.type == otherMessage.type;
     }
 
     public int hashCode(){
@@ -76,3 +76,5 @@ public class MessageClackData extends ClackData{
 
 
 }
+
+

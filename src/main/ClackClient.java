@@ -1,15 +1,15 @@
 package main;
- import java.io.*;
- import java.net.ServerSocket;
- import java.net.Socket;
- import java.util.InputMismatchException;
- import java.util.Scanner;
- import data.ClackData;
- import data.FileClackData;
- import data.MessageClackData;
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import data.ClackData;
+import data.FileClackData;
+import data.MessageClackData;
 
- import static data.ClackData.*;
- import static data.FileClackData.*;
+import static data.ClackData.*;
+import static data.FileClackData.*;
 
 public class ClackClient {
     public String userName;
@@ -24,7 +24,7 @@ public class ClackClient {
 //    ClackData dataToReceiveFromServer = null;
 //    ClackData dataToSendToServer = null;
 
-   private ObjectOutputStream outToServer;
+    private ObjectOutputStream outToServer;
     private ObjectInputStream inFromServer;
 //    ObjectOutputStream outToServer = null;
 //    ObjectInputStream inFromServer = null;
@@ -42,8 +42,8 @@ public class ClackClient {
         else throw new IllegalArgumentException("Port is not acceptable");
 
         this.closeConnection = false;
-       this.dataToReceiveFromServer = null;
-       this.dataToSendToServer = null;
+        this.dataToReceiveFromServer = null;
+        this.dataToSendToServer = null;
         this.outToServer = null;
         this.inFromServer = null;
     }
@@ -67,7 +67,7 @@ public class ClackClient {
         try {
 
             Socket skt = new Socket(hostName, port);
-           // Socket skt = new Socket(hostName, DEFAULT_PORT);
+            // Socket skt = new Socket(hostName, DEFAULT_PORT);
             System.out.println("test");
             // PrintWriter outToServer = new PrintWriter(skt.getOutputStream(), true);
             // BufferedReader inFromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
@@ -93,7 +93,7 @@ public class ClackClient {
                     // outToServer.println("From Server: Echo--" + inFromStd);
                 }
 
-               // dataToReceiveFromServer = dataToSendToServer;
+                // dataToReceiveFromServer = dataToSendToServer;
                 //  printData();
             }
             this.inFromStd.close();
@@ -171,12 +171,12 @@ public class ClackClient {
 
     public void printData() {
 
-            if (this.dataToReceiveFromServer != null) {
-                System.out.println("From: " + this.dataToReceiveFromServer.getUserName());
-                System.out.println("Date: " + this.dataToReceiveFromServer.getDate());
-                System.out.println("Data: " + this.dataToReceiveFromServer.getData(DEFAULTKEY));
-                System.out.println();
-            }
+        if (this.dataToReceiveFromServer != null) {
+            System.out.println("From: " + this.dataToReceiveFromServer.getUserName());
+            System.out.println("Date: " + this.dataToReceiveFromServer.getDate());
+            System.out.println("Data: " + this.dataToReceiveFromServer.getData(DEFAULTKEY));
+            System.out.println();
+        }
         //System.out.println(dataToReceiveFromServer);
     }
 
@@ -218,6 +218,4 @@ public class ClackClient {
 
     }
 }
-
-
 

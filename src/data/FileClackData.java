@@ -1,4 +1,3 @@
-
 package data;
 import javax.xml.crypto.Data;
 import java.io.IOException;
@@ -7,13 +6,13 @@ import java.io.*;
 public class FileClackData extends ClackData {
     String fileName;
     String fileContents;
-   //public final FileClackData  MessageClackData CONSTANT_LISTUSERS();
-   public FileClackData(String userName, String fileName, int type) {
+    //public final FileClackData  MessageClackData CONSTANT_LISTUSERS();
+    public FileClackData(String userName, String fileName, int type) {
         super(userName,type);
         this.fileName = fileName;
         this.fileContents = null;
     }
-   public FileClackData(){
+    public FileClackData(){
         super();
         // what to put for filename
         this.fileName = null;
@@ -115,4 +114,7 @@ public class FileClackData extends ClackData {
 
 
 }
+
+
+
 

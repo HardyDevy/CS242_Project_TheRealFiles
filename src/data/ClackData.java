@@ -29,8 +29,8 @@ public abstract class ClackData implements Serializable {
     }
 
 
-   // public ClackData() {
-        //this(CONSTANT_LOGOUT);
+    // public ClackData() {
+    //this(CONSTANT_LOGOUT);
     //}
 
     public int getType(){
@@ -125,3 +125,5 @@ public abstract class ClackData implements Serializable {
     }
 
 }
+
+
