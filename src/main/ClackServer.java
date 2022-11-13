@@ -16,7 +16,6 @@ public class ClackServer {
     ObjectOutputStream outToClient = null;
     ObjectInputStream inFromClient = null;
 
-
     public ClackServer(int port) {
         if (port < 1024)
             throw new IllegalArgumentException("Port Number must be greater than 1024.");
@@ -24,7 +23,6 @@ public class ClackServer {
             this.port = port;
         //dataToReceiveFromClient = null;
         //dataToSendToClient = null;
-
     }
 
     public ClackServer() {
@@ -40,9 +38,9 @@ public class ClackServer {
             ObjectOutputStream outToClient = new ObjectOutputStream(clientSkt.getOutputStream());
             ObjectInputStream inFromClient = new ObjectInputStream(clientSkt.getInputStream());
 
-    receiveData();
-    dataToSendToClient = dataToReceiveFromClient;
-    sendData();
+            receiveData();
+            dataToSendToClient = dataToReceiveFromClient;
+            sendData();
 
             sskt.close();
             clientSkt.close();
@@ -51,8 +49,7 @@ public class ClackServer {
         }catch (IOException ioe)
         { System.err.println("IO Exception occurred");
         }
-
-}
+    }
     public void sendData() {
         try {
             outToClient.writeObject(dataToSendToClient);
@@ -68,27 +65,24 @@ public class ClackServer {
             System.err.println("class not found");
         }
     }
-        public int getPort(){
-            return this.port;
-        }
+    public int getPort(){
+        return this.port;
+    }
 
-
-        public int hashCode(){
-            return 17 * (1 + this.port);
-        }
-        public boolean equals(Object other){
-            ClackServer otherClackServer = (ClackServer)other;
-            return (this.port == otherClackServer.port && this.closeConnection == otherClackServer.closeConnection);
-        }
-        public String toString(){
-            return ("Port: " + this.port);
-        }
+    public int hashCode(){
+        return 17 * (1 + this.port);
+    }
+    public boolean equals(Object other){
+        ClackServer otherClackServer = (ClackServer)other;
+        return (this.port == otherClackServer.port && this.closeConnection == otherClackServer.closeConnection);
+    }
+    public String toString(){
+        return ("Port: " + this.port);
+    }
 
     public static void main(String args[]) {
         ClackServer obj= new ClackServer();
         obj.start();
 
     }
-    }
-
-
+}

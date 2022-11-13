@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="newpt3">
+    <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="changes some things">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ClackClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ClackClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ClackServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestClackServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +41,10 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/larks/IdeaProjects/CS242_Project_TheRealFiles/src/main/ClackClient.java"
+    "last_opened_file_path": "C:/Users/larks/IdeaProjects/CS242_Project_TheRealFiles/src/test/TestClackClient.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -116,14 +119,7 @@
       <option name="project" value="LOCAL" />
       <updated>1666987800700</updated>
     </task>
-    <task id="LOCAL-00010" summary="newpt3">
-      <created>1668191806689</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1668191806689</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,7 +138,16 @@
     <MESSAGE value="Adds ClackData" />
     <MESSAGE value="Adds other classes" />
     <MESSAGE value="ProjectPt2Final" />
-    <MESSAGE value="newpt3" />
-    <option name="LAST_COMMIT_MESSAGE" value="newpt3" />
+    <option name="LAST_COMMIT_MESSAGE" value="ProjectPt2Final" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

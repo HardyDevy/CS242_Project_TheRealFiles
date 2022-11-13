@@ -1,15 +1,14 @@
 package main;
- import java.io.*;
- import java.net.ServerSocket;
- import java.net.Socket;
- import java.util.InputMismatchException;
- import java.util.Scanner;
- import data.ClackData;
- import data.FileClackData;
- import data.MessageClackData;
-
- import static data.ClackData.*;
- import static data.FileClackData.*;
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import data.ClackData;
+import data.FileClackData;
+import data.MessageClackData;
+import static data.ClackData.*;
+import static data.FileClackData.*;
 
 public class ClackClient {
     public String userName;
@@ -29,7 +28,6 @@ public class ClackClient {
 //    ObjectOutputStream outToServer = null;
 //    ObjectInputStream inFromServer = null;
 
-
     public ClackClient(String userName, String hostName, int port) {
         if (userName != null)
             this.userName = userName;
@@ -40,19 +38,14 @@ public class ClackClient {
         if (!(port < 1024))
             this.port = port;
         else throw new IllegalArgumentException("Port is not acceptable");
-
-
     }
-
 
     public ClackClient(String userName, String hostName) {
         this(userName, hostName, DEFAULT_PORT);
     }
-
     public ClackClient(String userName) {
         this(userName, "localhost");
     }
-
     public ClackClient() {
         this("anon");
     }
@@ -61,9 +54,8 @@ public class ClackClient {
         inFromStd = new Scanner(System.in);
 
         try {
-
             Socket skt = new Socket(hostName, port);
-           // Socket skt = new Socket(hostName, DEFAULT_PORT);
+            // Socket skt = new Socket(hostName, DEFAULT_PORT);
             System.out.println("test");
             // PrintWriter outToServer = new PrintWriter(skt.getOutputStream(), true);
             // BufferedReader inFromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
@@ -78,23 +70,15 @@ public class ClackClient {
                     sendData();
                     receiveData();
                     printData();
-
-
-                    // outToServer.println("From Server: Echo--" + inFromStd);
                 }
-
-                dataToReceiveFromServer = dataToSendToServer;
-                //  printData();
+//                dataToReceiveFromServer = dataToSendToServer;
             }
             inFromStd.close();
             outToServer.close();
             inFromServer.close();
             skt.close();
-
-
         } catch (IOException ioe) {
             System.err.println("Try that again");
-
         }
     }
 
@@ -106,7 +90,6 @@ public class ClackClient {
                 closeConnection = true;
             } else if (nextString.equals("LISTUSERS")) { //nothing rn
                 // else if (inFromStd.equals(CONSTANT_LOGOUT )) { // nothing rn
-
             } else if (nextString.equals("SENDFILE")) {
                 String filename = inFromStd.next();
                 dataToSendToServer = new FileClackData(userName, filename, CONSTANT_SENDFILE);
@@ -118,11 +101,9 @@ public class ClackClient {
             } else {
                 String message = nextString + this.inFromStd.nextLine();
                 // dataToSendToServer = new MessageClackData();
-
                 // String message = inFromStd.next();
                 this.dataToSendToServer = new MessageClackData(userName, message, DEFAULTKEY, ClackData.CONSTANT_SENDMESSAGE);
             }
-
         } catch (InputMismatchException ime) {
             System.err.println("Did not enter integer.");
         }
@@ -145,10 +126,8 @@ public class ClackClient {
             System.err.println("class not found");
         }
     }
-    // inFromServer();
 
     public void printData() {
-
 //            if (this.dataToReceiveFromServer != null) {
 //                System.out.println("From: " + this.dataToReceiveFromServer.getUserName());
 //                System.out.println("Date: " + this.dataToReceiveFromServer.getDate());
@@ -157,9 +136,6 @@ public class ClackClient {
 //            }
         System.out.println(dataToReceiveFromServer);
     }
-
-    ;
-
 
     public String getUserName() {
         return this.userName;
@@ -193,9 +169,10 @@ public class ClackClient {
     public static void main(String args[]) {
         ClackClient obj= new ClackClient();
         obj.start();
-
     }
 }
+
+
 
 
 
