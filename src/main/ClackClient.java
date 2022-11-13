@@ -16,7 +16,7 @@ public class ClackClient {
     public String hostName;
     public static final int DEFAULT_PORT = 6969;
     public int port;
-    public boolean closeConnection = false;
+    public boolean closeConnection;
     public Scanner inFromStd;
     protected static final String DEFAULTKEY = "SLAYGIRLBOSSBOSSSLAY";
     ClackData dataToSendToServer;
@@ -24,8 +24,8 @@ public class ClackClient {
 //    ClackData dataToReceiveFromServer = null;
 //    ClackData dataToSendToServer = null;
 
-    ObjectOutputStream outToServer;
-    ObjectInputStream inFromServer;
+   private ObjectOutputStream outToServer;
+    private ObjectInputStream inFromServer;
 //    ObjectOutputStream outToServer = null;
 //    ObjectInputStream inFromServer = null;
 
@@ -41,19 +41,23 @@ public class ClackClient {
             this.port = port;
         else throw new IllegalArgumentException("Port is not acceptable");
 
-
+        this.closeConnection = false;
+       this.dataToReceiveFromServer = null;
+       this.dataToSendToServer = null;
+        this.outToServer = null;
+        this.inFromServer = null;
     }
 
 
-    public ClackClient(String userName, String hostName) {
+    public ClackClient(String userName, String hostName) throws IllegalArgumentException{
         this(userName, hostName, DEFAULT_PORT);
     }
 
-    public ClackClient(String userName) {
+    public ClackClient(String userName)throws IllegalArgumentException {
         this(userName, "localhost");
     }
 
-    public ClackClient() {
+    public ClackClient() throws IllegalArgumentException{
         this("anon");
     }
 
@@ -70,25 +74,31 @@ public class ClackClient {
             ObjectOutputStream outToServer = new ObjectOutputStream(skt.getOutputStream());
             ObjectInputStream inFromServer = new ObjectInputStream(skt.getInputStream());
 
-            while (!closeConnection) {
+            while (!this.closeConnection) {
+                System.out.println("connection open");
                 readClientData();
+                this.dataToReceiveFromServer = this.dataToSendToServer;
+                System.out.println("ye");
                 if (inFromStd == null) {
                     System.out.println("No input detected");
                 } else {
+                    System.out.println("send data");
                     sendData();
+                    System.out.println("receive data");
                     receiveData();
+                    System.out.println("print");
                     printData();
 
 
                     // outToServer.println("From Server: Echo--" + inFromStd);
                 }
 
-                dataToReceiveFromServer = dataToSendToServer;
+               // dataToReceiveFromServer = dataToSendToServer;
                 //  printData();
             }
-            inFromStd.close();
-            outToServer.close();
-            inFromServer.close();
+            this.inFromStd.close();
+            this.outToServer.close();
+            this.inFromServer.close();
             skt.close();
 
 
@@ -103,24 +113,29 @@ public class ClackClient {
         String nextString = inFromStd.next();
         try {
             if (nextString.equals("DONE")) {
-                closeConnection = true;
+                this.closeConnection = true;
+                this.dataToSendToServer = new MessageClackData(this.userName, nextString, DEFAULTKEY,
+                        ClackData.CONSTANT_LOGOUT);
+
+
             } else if (nextString.equals("LISTUSERS")) { //nothing rn
                 // else if (inFromStd.equals(CONSTANT_LOGOUT )) { // nothing rn
 
             } else if (nextString.equals("SENDFILE")) {
                 String filename = inFromStd.next();
-                dataToSendToServer = new FileClackData(userName, filename, CONSTANT_SENDFILE);
+                this.dataToSendToServer = new FileClackData(this.userName, filename, CONSTANT_SENDFILE);
                 try {
                     ((FileClackData) this.dataToSendToServer).readFileContents(DEFAULTKEY);
                 } catch (IOException ioe) {
                     System.err.println("IO Exception");
+                    this.dataToSendToServer = null;
                 }
             } else {
                 String message = nextString + this.inFromStd.nextLine();
                 // dataToSendToServer = new MessageClackData();
-
+                System.out.println("reached else. not listusers or send file");
                 // String message = inFromStd.next();
-                this.dataToSendToServer = new MessageClackData(userName, message, DEFAULTKEY, ClackData.CONSTANT_SENDMESSAGE);
+                this.dataToSendToServer = new MessageClackData(this.userName, message, DEFAULTKEY, ClackData.CONSTANT_SENDMESSAGE);
             }
 
         } catch (InputMismatchException ime) {
@@ -130,32 +145,39 @@ public class ClackClient {
 
     public void sendData() {
         try {
-            outToServer.writeObject(dataToSendToServer);
+            this.outToServer.writeObject(this.dataToSendToServer);
+            System.out.println("reached try in send data");
         } catch (IOException ioe) {
+            // catch (Exception e) {
             System.err.println("IO Exception");
+        } catch (RuntimeException rte) {
+            System.err.println("runtime Exception");
         }
     }
-
     public void receiveData() {
         try {
-            ClackData dataToReceiveFromServer = (ClackData) inFromServer.readObject();
+//            ClackData dataToReceiveFromServer = (ClackData) inFromServer.readObject();
+            this.dataToReceiveFromServer = (ClackData) this.inFromServer.readObject();
+            System.out.println("reached try in receive data");
         } catch (IOException ioe) {
             System.err.println("IO Exception");
         } catch (ClassNotFoundException cnfe) {
             System.err.println("class not found");
+        }catch (RuntimeException rte) {
+            System.err.println("runtime Exception");
         }
     }
     // inFromServer();
 
     public void printData() {
 
-//            if (this.dataToReceiveFromServer != null) {
-//                System.out.println("From: " + this.dataToReceiveFromServer.getUserName());
-//                System.out.println("Date: " + this.dataToReceiveFromServer.getDate());
-//                System.out.println("Data: " + this.dataToReceiveFromServer.getData(DEFAULTKEY));
-//                System.out.println();
-//            }
-        System.out.println(dataToReceiveFromServer);
+            if (this.dataToReceiveFromServer != null) {
+                System.out.println("From: " + this.dataToReceiveFromServer.getUserName());
+                System.out.println("Date: " + this.dataToReceiveFromServer.getDate());
+                System.out.println("Data: " + this.dataToReceiveFromServer.getData(DEFAULTKEY));
+                System.out.println();
+            }
+        //System.out.println(dataToReceiveFromServer);
     }
 
     ;

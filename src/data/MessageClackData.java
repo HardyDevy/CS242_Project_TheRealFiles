@@ -10,7 +10,7 @@ public class MessageClackData extends ClackData{
     public final int CONSTANT_SENDMESSAGE =2;
     public MessageClackData(String userName, String message, String key, int type){
         super(userName, type);
-        this.message = message;
+        this.message = encrypt(message,key);
     }
 
 
@@ -20,25 +20,37 @@ public class MessageClackData extends ClackData{
        this.message = message;
    }
 
-    public MessageClackData(){
-       this("Anon","Error",5);
+    public MessageClackData() {
+        // It is okay to do either this:
+        super(ClackData.CONSTANT_SENDMESSAGE);
+        this.message = "";
     }
+//    public MessageClackData(){
+//       this("Anon","Error",5);
+//    }
 
 
 
     public String getMessage(){
-        return message;
+        return this.message;
     }
     public String getData(){
-       return message;
+       return this.message;
    };
     public String getData(String key){
-        decrypt(message, key);
-        return message;
+        return decrypt(message, key);
+        //return message;
     };
 
 
     public boolean equals(Object other){
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof MessageClackData)) {
+            return false;
+        }
+
         MessageClackData otherMessage = (MessageClackData) other;
        return this.userName == otherMessage.userName &&
                this.message == otherMessage.message &&
@@ -47,14 +59,20 @@ public class MessageClackData extends ClackData{
 
     public int hashCode(){
         int result = 5;
-        result = 17 * result + userName.hashCode();
-        result = 17 * result + message.hashCode();
-        result = 17 * result + type;
+        result = 17 * result + this.userName.hashCode();
+        result = 17 * result + this.message.hashCode();
+        result = 17 * result + this.type;
         return result;
 
     }
 
-    public String toString() { return this.message;}
+    public String toString() {// return this.message;
+        return "This instance of MessageClackData has the following properties:\n"
+                + "Username: " + this.userName + "\n"
+                + "Type: " + this.type + "\n"
+                + "Date: " + this.date.toString() + "\n"
+                + "Message: " + this.message + "\n";
+    }// }
 
 
 }
