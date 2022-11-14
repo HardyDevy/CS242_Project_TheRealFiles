@@ -116,13 +116,14 @@ public class ClackClient {
                 this.closeConnection = true;
                 this.dataToSendToServer = new MessageClackData(this.userName, nextString, DEFAULTKEY,
                         ClackData.CONSTANT_LOGOUT);
-
+                System.exit(0);
 
             } else if (nextString.equals("LISTUSERS")) { //nothing rn
                 // else if (inFromStd.equals(CONSTANT_LOGOUT )) { // nothing rn
 
             } else if (nextString.equals("SENDFILE")) {
-                String filename = inFromStd.next();
+                System.out.println("Input file name: ");
+                String filename = this.inFromStd.next();
                 this.dataToSendToServer = new FileClackData(this.userName, filename, CONSTANT_SENDFILE);
                 try {
                     ((FileClackData) this.dataToSendToServer).readFileContents(DEFAULTKEY);
@@ -134,17 +135,17 @@ public class ClackClient {
                 String message = nextString + this.inFromStd.nextLine();
                 // dataToSendToServer = new MessageClackData();
                 System.out.println("reached else. not listusers or send file");
-                // String message = inFromStd.next();
                 this.dataToSendToServer = new MessageClackData(this.userName, message, DEFAULTKEY, ClackData.CONSTANT_SENDMESSAGE);
             }
 
-        } catch (InputMismatchException ime) {
-            System.err.println("Did not enter integer.");
+        } catch (RuntimeException rte) {
+            System.err.println("runtime error");
         }
     }
 
     public void sendData() {
         try {
+            System.out.println("reached before try in send data");
             this.outToServer.writeObject(this.dataToSendToServer);
             System.out.println("reached try in send data");
         } catch (IOException ioe) {

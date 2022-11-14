@@ -44,11 +44,12 @@ public class ClackServer {
             this.outToClient = new ObjectOutputStream(clientSkt.getOutputStream());
             this.inFromClient = new ObjectInputStream(clientSkt.getInputStream());
 
-            receiveData();
-            this.dataToSendToClient = this.dataToReceiveFromClient;
-            //this.dataToReceiveFromClient = this.dataToSendToClient;
-            sendData();
-
+            while (!this.closeConnection) {
+                receiveData();
+                this.dataToSendToClient = this.dataToReceiveFromClient;
+                //this.dataToReceiveFromClient = this.dataToSendToClient;
+                sendData();
+            }
             sskt.close();
             clientSkt.close();
             this.outToClient.close();
@@ -58,15 +59,7 @@ public class ClackServer {
         }
 
     }
-    public void sendData() {
-        try {
-            this.outToClient.writeObject(this.dataToSendToClient);
-        } catch (IOException ioe) {
-            System.err.println("IO Exception");
-        }catch (RuntimeException rte) {
-            System.err.println("runtime Exception");
-        }
-    }
+
     public void receiveData(){
         try {
             System.out.println("reached before try in receive data");
@@ -80,6 +73,18 @@ public class ClackServer {
             System.err.println("runtime Exception");
         }
 
+    }
+    public void sendData() {
+        try {
+            System.out.println("reached before try in send data");
+            //this.dataToSendToClient = this.dataToReceiveFromClient;
+            this.outToClient.writeObject(this.dataToSendToClient);
+            System.out.println("reached try in send data");
+        } catch (IOException ioe) {
+            System.err.println("IO Exception");
+        }catch (RuntimeException rte) {
+            System.err.println("runtime Exception");
+        }
     }
     public int getPort(){
         return this.port;
