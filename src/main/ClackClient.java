@@ -216,28 +216,33 @@ public class ClackClient {
     }
 
     public static void main(String[] args) {
+        try{
         ClackClient client;
         if (args.length == 0) {
             client = new ClackClient();
         } else {
-            Scanner scan = new Scanner(args[0]);
-            scan.useDelimiter("[@:]");
+            Scanner scan = new Scanner(args[0]).useDelimiter("//@//");
+            //scan.useDelimiter(" ");
             String username = scan.next();
 
             if (scan.hasNext()) {
+
                 String hostname = scan.next();
 
                 if (scan.hasNext()) {
-                    int port = Integer.parseInt(args[0]);
+//                    int port = Integer.parseInt(args[0]);
+                    int port = Integer.parseInt(scan.next());
                     client = new ClackClient(username, hostname, port);
                 } else {client = new ClackClient(username, hostname);}
                 } else {
                     client = new ClackClient(username);
                 }
-
-            }
             client.start();
+            }
+
+        } catch(NumberFormatException ime){System.err.println("Incorrect input");}
         }
+
     }
 
 

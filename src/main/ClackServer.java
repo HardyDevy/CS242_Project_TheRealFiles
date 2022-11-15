@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.InputMismatchException;
 
 public class ClackServer {
     int port;
@@ -122,13 +123,18 @@ public class ClackServer {
 
 
     public static void main(String[] args) {
+        try {
         ClackServer server;
         if (args.length == 0) {
             server = new ClackServer();
         } else {
-            int port = Integer.parseInt(args[0]);
-            server = new ClackServer(port);
-        }
+
+                int port = Integer.parseInt(args[0]);
+                server = new ClackServer(port);
+
         server.start();
     }
+        } catch(NumberFormatException ime){System.err.println("Incorrect input");}
+    }
 }
+

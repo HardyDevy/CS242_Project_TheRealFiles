@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="newpt3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/ClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ClackData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/MessageClackData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/MessageClackData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ClackClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ClackClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ClackServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestClackServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,10 +47,19 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ClackClient">
+    <configuration name="ClackClient" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="main.ClackClient" />
+      <module name="CS242_Project_TheRealFiles" />
+      <option name="PROGRAM_PARAMETERS" value="lark @ wowcool" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ClackServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.ClackServer" />
       <module name="CS242_Project_TheRealFiles" />
+      <option name="PROGRAM_PARAMETERS" value="6969" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -61,6 +70,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.ClackClient" />
+      <item itemvalue="Application.ClackServer" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClackServer" />
@@ -195,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668471269641</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="newpt3">
+      <created>1668473229566</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1668473229566</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
