@@ -4,8 +4,6 @@
     <list default="true" id="6e74a703-307e-4f24-9dc3-18ef15fc3f33" name="Changes" comment="newpt3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/ClackClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ClackClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ClackServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestClackServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestClackServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,7 @@
     <configuration name="ClackClient" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.ClackClient" />
       <module name="CS242_Project_TheRealFiles" />
-      <option name="PROGRAM_PARAMETERS" value="lark @ wowcool" />
+      <option name="PROGRAM_PARAMETERS" value="lark@localhost:6969" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -215,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668473229566</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="newpt3">
+      <created>1668476730534</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1668476730534</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
