@@ -214,11 +214,24 @@ public class ClackClient {
         return ("Username: " + this.userName + '\n' + "Host Name: " + this.hostName + '\n' + "Port: " + this.port);
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
+        ClackClient client;
+        if (args.length == 0) {
+            client = new ClackClient();
+        } else {
+            Scanner scan = new Scanner(args[0]);
+            scan.useDelimiter("[@:]");
+            String username = scan.next();
 
-        ClackClient obj= new ClackClient();
-        obj.start();
+            if (scan.hasNext()) {
 
+            }
+            else {
+                client = new ClackClient(username);
+            }
+
+        }
+        client.start();
     }
 }
 

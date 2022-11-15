@@ -1,4 +1,5 @@
 package main;
+
 import data.ClackData;
 
 import java.io.IOException;
@@ -54,26 +55,28 @@ public class ClackServer {
             clientSkt.close();
             this.outToClient.close();
             this.inFromClient.close();
-        }catch (IOException ioe)
-        { System.err.println("IO Exception occurred");
+        } catch (IOException ioe) {
+            System.err.println("IO Exception occurred");
         }
 
     }
 
-    public void receiveData(){
+    public void receiveData() {
         try {
             System.out.println("reached before try in receive data");
-            this.dataToReceiveFromClient = (ClackData)this.inFromClient.readObject();
+            this.dataToReceiveFromClient = (ClackData) this.inFromClient.readObject();
             //this.inFromClient.readObject(this.dataToReceiveFromClient);
             System.out.println("reached try in receive data");
-        } catch (IOException ioe){System.err.println("IO Exception");
-        }catch(ClassNotFoundException cnfe) {
+        } catch (IOException ioe) {
+            System.err.println("IO Exception");
+        } catch (ClassNotFoundException cnfe) {
             System.err.println("class not found");
-        }catch (RuntimeException rte) {
+        } catch (RuntimeException rte) {
             System.err.println("runtime Exception");
         }
 
     }
+
     public void sendData() {
         try {
             System.out.println("reached before try in send data");
@@ -82,19 +85,21 @@ public class ClackServer {
             System.out.println("reached try in send data");
         } catch (IOException ioe) {
             System.err.println("IO Exception");
-        }catch (RuntimeException rte) {
+        } catch (RuntimeException rte) {
             System.err.println("runtime Exception");
         }
     }
-    public int getPort(){
+
+    public int getPort() {
         return this.port;
     }
 
 
-    public int hashCode(){
+    public int hashCode() {
         return 17 * (1 + this.port);
     }
-    public boolean equals(Object other){
+
+    public boolean equals(Object other) {
         if (this == other) {
             return true;
         }
@@ -102,10 +107,11 @@ public class ClackServer {
             return false;
         }
 
-        ClackServer otherClackServer = (ClackServer)other;
+        ClackServer otherClackServer = (ClackServer) other;
         return (this.port == otherClackServer.port && this.closeConnection == otherClackServer.closeConnection);
     }
-    public String toString(){
+
+    public String toString() {
         //return ("Port: " + this.port);
         return "This instance of ClackServer has the following properties:\n"
                 + "Port number: " + this.port + "\n"
@@ -115,29 +121,14 @@ public class ClackServer {
     }
 
 
-
-    public static void main(String args[]) {
-        if (args.length > 0) {
-
-            // Print statements
-            System.out.println("The command line"
-                    + " arguments are:");
-
-            // Iterating the args array
-            // using for each loop
-            for (String val : args)
-
-                // Printing command line arguments
-                System.out.println(val);
+    public static void main(String[] args) {
+        ClackServer server;
+        if (args.length == 0) {
+            server = new ClackServer();
+        } else {
+            int port = Integer.parseInt(args[0]);
+            server = new ClackServer(port);
         }
-
-        else
-
-            // Print statements
-            System.out.println("No command line "
-                    + "arguments found.");
-        ClackServer obj= new ClackServer();
-        obj.start();
-
+        server.start();
     }
 }
