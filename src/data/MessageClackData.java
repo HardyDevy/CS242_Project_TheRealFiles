@@ -8,17 +8,18 @@ public class MessageClackData extends ClackData{
 
     public final int CONSTANT_LOGOUT = 1;
     public final int CONSTANT_SENDMESSAGE =2;
-    public MessageClackData(String userName, String message, String key, int type){
-        super(userName, type);
-        this.message = encrypt(message,key);
-    }
-
-
-
     public MessageClackData(String userName, String message, int type){
         super(userName, type);
         this.message = message;
     }
+    public MessageClackData(String userName, String message, String key, int type){
+        super(userName, type);
+        this.message = encrypt(message, key);
+    }
+
+
+
+
 
     public MessageClackData() {
         // It is okay to do either this:
@@ -38,7 +39,7 @@ public class MessageClackData extends ClackData{
         return this.message;
     };
     public String getData(String key){
-        return decrypt(message, key);
+        return decrypt(this.message, key);
         //return message;
     };
 

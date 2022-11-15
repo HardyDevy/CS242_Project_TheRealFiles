@@ -18,7 +18,7 @@ public class ClackClient {
     public int port;
     public boolean closeConnection;
     public Scanner inFromStd;
-    protected static final String DEFAULTKEY = "SLAYGIRLBOSSBOSSSLAY";
+    protected static final String DEFAULTKEY = "JHGJASKJ";
     ClackData dataToSendToServer;
     ClackData dataToReceiveFromServer;
 //    ClackData dataToReceiveFromServer = null;
@@ -49,15 +49,15 @@ public class ClackClient {
     }
 
 
-    public ClackClient(String userName, String hostName) throws IllegalArgumentException{
+    public ClackClient(String userName, String hostName) throws IllegalArgumentException {
         this(userName, hostName, DEFAULT_PORT);
     }
 
-    public ClackClient(String userName)throws IllegalArgumentException {
+    public ClackClient(String userName) throws IllegalArgumentException {
         this(userName, "localhost");
     }
 
-    public ClackClient() throws IllegalArgumentException{
+    public ClackClient() throws IllegalArgumentException {
         this("anon");
     }
 
@@ -155,6 +155,7 @@ public class ClackClient {
             System.err.println("runtime Exception");
         }
     }
+
     public void receiveData() {
         try {
 //            ClackData dataToReceiveFromServer = (ClackData) inFromServer.readObject();
@@ -165,7 +166,7 @@ public class ClackClient {
             System.err.println("IO Exception");
         } catch (ClassNotFoundException cnfe) {
             System.err.println("class not found");
-        }catch (RuntimeException rte) {
+        } catch (RuntimeException rte) {
             System.err.println("runtime Exception");
         }
     }
@@ -224,14 +225,19 @@ public class ClackClient {
             String username = scan.next();
 
             if (scan.hasNext()) {
+                String hostname = scan.next();
+
+                if (scan.hasNext()) {
+                    int port = Integer.parseInt(args[0]);
+                    client = new ClackClient(username, hostname, port);
+                } else {client = new ClackClient(username, hostname);}
+                } else {
+                    client = new ClackClient(username);
+                }
 
             }
-            else {
-                client = new ClackClient(username);
-            }
-
+            client.start();
         }
-        client.start();
     }
-}
+
 
