@@ -1,22 +1,29 @@
 package main;
 
 import data.ClackData;
+import data.ListUsersClackData;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 public class ClackServer {
     int port;
+
+String userList;
     private static final int DEFAULT_PORT = 6969;
+    protected static final String DEFAULTKEY = "JHGJASKJ";
     boolean closeConnection;
-    public ClackData dataToReceiveFromClient;
-    public ClackData dataToSendToClient;
-    ObjectOutputStream outToClient;
-    ObjectInputStream inFromClient;
+    public ListUsersClackData LUClackData;
+//    public ClackData dataToReceiveFromClient;
+//    public ClackData dataToSendToClient;
+//    ObjectOutputStream outToClient;
+//    ObjectInputStream inFromClient;
+    ArrayList<ServerSideClientIO> serverSideClientIOList;
 
 
     public ClackServer(int port) {
@@ -25,10 +32,13 @@ public class ClackServer {
         else
             this.port = port;
         this.closeConnection = false;
-        this.dataToReceiveFromClient = null;
-        this.dataToSendToClient = null;
-        this.outToClient = null;
-        this.inFromClient = null;
+        serverSideClientIOList = new ArrayList<ServerSideClientIO>();
+LUClackData = new ListUsersClackData();
+//        this.dataToReceiveFromClient = null;
+//        this.dataToSendToClient = null;
+//        this.outToClient = null;
+//        this.inFromClient = null;
+
 
 
     }
@@ -37,59 +47,81 @@ public class ClackServer {
         this(DEFAULT_PORT);
     }
 
-    public void start() {
-        try {
-            ServerSocket sskt = new ServerSocket(port);
-            System.out.println("Waiting to accept client");
-            Socket clientSkt = sskt.accept();
-            System.out.println("accepted");
-            this.outToClient = new ObjectOutputStream(clientSkt.getOutputStream());
-            this.inFromClient = new ObjectInputStream(clientSkt.getInputStream());
+   public void start() {
+                try {
+           ServerSocket sskt = new ServerSocket(port);
+//            System.out.println("Waiting to accept client");
+//            Socket clientSkt = sskt.accept();
+//            System.out.println("accepted");
+//            this.outToClient = new ObjectOutputStream(clientSkt.getOutputStream());
+//            this.inFromClient = new ObjectInputStream(clientSkt.getInputStream());
 
-            while (!this.closeConnection) {
-                receiveData();
-                this.dataToSendToClient = this.dataToReceiveFromClient;
-                //this.dataToReceiveFromClient = this.dataToSendToClient;
-                sendData();
-            }
-            sskt.close();
-            clientSkt.close();
-            this.outToClient.close();
-            this.inFromClient.close();
-        } catch (IOException ioe) {
-            System.err.println("IO Exception occurred");
+           while (!this.closeConnection) {
+               System.out.println("Waiting to accept client");
+               Socket clientSkt = sskt.accept();
+               System.out.println("accepted");
+               ServerSideClientIO serverSideClientIO = new ServerSideClientIO(this, clientSkt);
+
+               serverSideClientIOList.add(serverSideClientIO);
+               //System.out.println(serverSideClientIO.UserList);
+               Thread serverSideClientIOThread = new Thread(serverSideClientIO);
+               serverSideClientIOThread.start();
+//               remove(serverSideClientIO);
+
+           }
+
+           sskt.close();
+
+//            this.outToClient.close();
+//            this.inFromClient.close();
+       } catch (IOException ioe) {
+           System.err.println("IO Exception occurred start");
+       }
+   }
+
+public synchronized void createUserList(){
+        for(ServerSideClientIO i : serverSideClientIOList){
+            userList = i.clientUsername + '\n';
+            System.out.println(userList);
         }
-
+}
+    public synchronized void remove(ServerSideClientIO serverSideClientToRemove){
+        serverSideClientIOList.remove(serverSideClientToRemove);
     }
 
-    public void receiveData() {
-        try {
-            System.out.println("reached before try in receive data");
-            this.dataToReceiveFromClient = (ClackData) this.inFromClient.readObject();
-            //this.inFromClient.readObject(this.dataToReceiveFromClient);
-            System.out.println("reached try in receive data");
-        } catch (IOException ioe) {
-            System.err.println("IO Exception");
-        } catch (ClassNotFoundException cnfe) {
-            System.err.println("class not found");
-        } catch (RuntimeException rte) {
-            System.err.println("runtime Exception");
-        }
-
-    }
-
-    public void sendData() {
-        try {
-            System.out.println("reached before try in send data");
-            //this.dataToSendToClient = this.dataToReceiveFromClient;
-            this.outToClient.writeObject(this.dataToSendToClient);
-            System.out.println("reached try in send data");
-        } catch (IOException ioe) {
-            System.err.println("IO Exception");
-        } catch (RuntimeException rte) {
-            System.err.println("runtime Exception");
+    public synchronized void broadcast( ClackData dataToBroadcastToClients){
+        for(ServerSideClientIO i : serverSideClientIOList){
+            i.setDataToSendToClient((dataToBroadcastToClients));
+            i.sendData();
+            //i.dataToSendToClient((UserList));
         }
     }
+
+//    public void receiveData() {
+//        try {
+//            this.dataToReceiveFromClient = (ClackData) this.inFromClient.readObject();
+//
+//        } catch (IOException ioe) {
+//            System.err.println("IO Exception");
+//        } catch (ClassNotFoundException cnfe) {
+//            System.err.println("class not found");
+//        } catch (RuntimeException rte) {
+//            System.err.println("runtime Exception");
+//        }
+//
+//    }
+
+//    public void sendData() {
+//        try {
+//
+//            this.outToClient.writeObject(this.dataToSendToClient);
+//
+//        } catch (IOException ioe) {
+//            System.err.println("IO Exception");
+//        } catch (RuntimeException rte) {
+//            System.err.println("runtime Exception");
+//        }
+//    }
 
     public int getPort() {
         return this.port;
@@ -116,9 +148,9 @@ public class ClackServer {
         //return ("Port: " + this.port);
         return "This instance of ClackServer has the following properties:\n"
                 + "Port number: " + this.port + "\n"
-                + "Connection status: " + (this.closeConnection ? "Closed" : "Open") + "\n"
-                + "Data to receive from the client: " + this.dataToReceiveFromClient + "\n"
-                + "Data to send to the client: " + this.dataToSendToClient + "\n";
+                + "Connection status: " + (this.closeConnection ? "Closed" : "Open") + "\n";
+//                + "Data to receive from the client: " + this.dataToReceiveFromClient + "\n"
+//                + "Data to send to the client: " + this.dataToSendToClient + "\n";
     }
 
 

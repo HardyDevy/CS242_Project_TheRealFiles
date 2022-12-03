@@ -3,10 +3,9 @@ package data;
 import javax.xml.crypto.Data;
 
 public class MessageClackData extends ClackData{
-    //data.MessageClackData
     private String message;
 
-    public final int CONSTANT_LOGOUT = 1;
+    public final int CONSTANT_LOGOUT = 0;
     public final int CONSTANT_SENDMESSAGE =2;
     public MessageClackData(String userName, String message, int type){
         super(userName, type);
@@ -22,13 +21,10 @@ public class MessageClackData extends ClackData{
 
 
     public MessageClackData() {
-        // It is okay to do either this:
         super(ClackData.CONSTANT_SENDMESSAGE);
         this.message = "";
     }
-//    public MessageClackData(){
-//       this("Anon","Error",5);
-//    }
+
 
 
 
@@ -40,7 +36,6 @@ public class MessageClackData extends ClackData{
     };
     public String getData(String key){
         return decrypt(this.message, key);
-        //return message;
     };
 
 
