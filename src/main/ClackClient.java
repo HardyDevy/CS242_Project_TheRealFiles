@@ -10,6 +10,7 @@ import data.FileClackData;
 import data.ListUsersClackData;
 import data.MessageClackData;
 
+
 import static data.ClackData.*;
 import static data.FileClackData.*;
 
@@ -18,6 +19,7 @@ public class ClackClient {
     public String hostName;
     public static final int DEFAULT_PORT = 6969;
     public int port;
+    public boolean doNOTERROR = false;
     public boolean closeConnection;
     public Scanner inFromStd;
     protected static final String DEFAULTKEY = "JHGJASKJ";
@@ -26,6 +28,7 @@ public class ClackClient {
 
     private ObjectOutputStream outToServer;
     private ObjectInputStream inFromServer;
+    boolean messageOnetime = false;
 
 
 
@@ -71,7 +74,6 @@ public class ClackClient {
             ClientSideServerListener clntserv = new ClientSideServerListener(this);
             Thread clntservthread = new Thread(clntserv);
             //sendUsername();
-
             clntservthread.start();
             while (!this.closeConnection) {
                 readClientData();
@@ -105,14 +107,16 @@ public class ClackClient {
     }
 
     public void readClientData() {
+        if(!messageOnetime){
         System.out.println("Input message: ");
+        messageOnetime = true;}
         String nextString = inFromStd.next();
         try {
             if (nextString.equals("DONE")) {
                 this.closeConnection = true;
                 this.dataToSendToServer = new MessageClackData(this.userName, nextString, DEFAULTKEY,
                         ClackData.CONSTANT_LOGOUT);
-                //System.exit(0);
+
 
             } else if (nextString.equals("LISTUSERS")) {
                 this.dataToSendToServer = new ListUsersClackData(this.userName, ClackData.CONSTANT_LISTUSERS);
@@ -152,8 +156,9 @@ public class ClackClient {
 
     public void receiveData() {
         try {
-            dataToReceiveFromServer = (ClackData) inFromServer.readObject();
-
+            if(!closeConnection) {
+                dataToReceiveFromServer = (ClackData) inFromServer.readObject();
+            }
         } catch (IOException ioe) {
 System.err.println("IO Exception");
         } catch (ClassNotFoundException cnfe) {

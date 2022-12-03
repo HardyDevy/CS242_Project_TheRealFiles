@@ -93,35 +93,11 @@ public synchronized void createUserList(){
         for(ServerSideClientIO i : serverSideClientIOList){
             i.setDataToSendToClient((dataToBroadcastToClients));
             i.sendData();
-            //i.dataToSendToClient((UserList));
+
         }
     }
 
-//    public void receiveData() {
-//        try {
-//            this.dataToReceiveFromClient = (ClackData) this.inFromClient.readObject();
-//
-//        } catch (IOException ioe) {
-//            System.err.println("IO Exception");
-//        } catch (ClassNotFoundException cnfe) {
-//            System.err.println("class not found");
-//        } catch (RuntimeException rte) {
-//            System.err.println("runtime Exception");
-//        }
-//
-//    }
 
-//    public void sendData() {
-//        try {
-//
-//            this.outToClient.writeObject(this.dataToSendToClient);
-//
-//        } catch (IOException ioe) {
-//            System.err.println("IO Exception");
-//        } catch (RuntimeException rte) {
-//            System.err.println("runtime Exception");
-//        }
-//    }
 
     public int getPort() {
         return this.port;

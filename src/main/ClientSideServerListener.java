@@ -10,9 +10,13 @@ public class ClientSideServerListener implements Runnable{
    public void run(){
 
                while (!client.getCloseConnection()) {
-
-                   client.receiveData();
-                   client.printData();
+                   if(!client.doNOTERROR) {
+                       client.receiveData();
+                   }
+                   if(!client.closeConnection) {
+                       client.printData();
+                       System.out.println("Input message: ");
+                   }
                }
 
    }
